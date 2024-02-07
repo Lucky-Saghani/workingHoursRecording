@@ -137,8 +137,10 @@ class TimeLogController extends Controller
 
         // Add data
         foreach ($timeLogs as $timeLog) {
+            $projectName = $timeLog->project->name ?? 'No Project'; // Use 'No Project' if project name is not available
+        
             fputcsv($handle, array(
-                $timeLog->project->name,
+                $projectName,
                 $timeLog->start_time,
                 $timeLog->end_time,
                 $timeLog->description,
