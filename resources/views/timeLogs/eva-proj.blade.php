@@ -38,7 +38,10 @@
                 @foreach ($workedHours as $projectName => $projectData)
                     <div class="col-md-6">
                         <h3>{{ $projectName }}</h3>
-                        <canvas id="{{ Str::slug($projectName) }}Chart" width="400" height="200"></canvas>
+                        @php
+                            $chartId = str_replace(' ', '_', $projectName);
+                        @endphp
+                        <canvas id="{{ $chartId }}Chart" width="400" height="200"></canvas>
                     </div>
                 @endforeach
             </div>
@@ -53,8 +56,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             @foreach ($workedHours as $projectName => $projectData)
-                var ctx = document.getElementById('{{ Str::slug($projectName) }}Chart').getContext('2d');
-                var {{ Str::slug($projectName) }}Chart = new Chart(ctx, {
+                var ctx = document.getElementById('{{ str_replace(' ', '_', $projectName) }}Chart').getContext('2d');
+                var {{ str_replace(' ', '_', $projectName) }}Chart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: {!! json_encode($projectData->pluck('month')->toArray()) !!},

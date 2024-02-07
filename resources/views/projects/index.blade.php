@@ -7,7 +7,8 @@
             <h1>Projects</h1>
         </div>
         <div class="col-md-6 text-md-end">
-            <a href="{{ route('projects.create') }}" class="btn btn-success">Create New Project</a>
+            <a href="{{ route('timeLogs.index') }}" class="btn btn-primary">View Timelogs</a>
+            <a href="{{ route('projects.create') }}" class="btn btn-primary">Create New Project</a>
         </div>
     </div>
 

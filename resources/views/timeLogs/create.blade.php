@@ -57,14 +57,12 @@
                 </div>
             </div>
         </form>
-        
-        
     </div>
 
     <script>
         function validateTime() {
-            var startTime = document.getElementById('start_time').value;
-            var endTime = document.getElementById('end_time').value;
+            var startTime = new Date(document.getElementById('start_time').value);
+            var endTime = new Date(document.getElementById('end_time').value);
 
             if (startTime >= endTime) {
                 alert('End time must be greater than start time.');
@@ -73,5 +71,6 @@
 
             return true;
         }
+
     </script>
 @endsection
